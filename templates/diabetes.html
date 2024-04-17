@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DigiHealth - Diabetes Prediction</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url('static/background.jpg');
+            background-size: cover;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+            color: #0066cc;
+            margin-top: 20px;
+        }
+
+        .outer-box {
+            display: flex;
+            justify-content: space-between;
+            width: 80%;
+            max-width: 800px;
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #0066cc;
+            border-radius: 8px;
+            box-sizing: border-box;
+            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-section,
+        .form-section {
+            width: 48%;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        h2 {
+            color: #0066cc;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        ul {
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            margin-bottom: 8px;
+            color: #0066cc;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+            border: 1px solid #0066cc;
+            border-radius: 4px;
+        }
+
+        button {
+            width: 100%;
+            background-color: #0066cc;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #004080;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>DigiHealth - Diabetes Prediction</h1>
+
+    <div class="outer-box">
+        <div class="form-section">
+            <form method="post" action="/diabetes">
+                <label for="Pregnancies">Number of Pregnancies:</label>
+                <input type="text" name="Pregnancies" required>
+
+                <label for="Glucose">Glucose Level:</label>
+                <input type="text" name="Glucose" required>
+
+                <label for="BloodPressure">Blood Pressure value:</label>
+                <input type="text" name="BloodPressure" required>
+
+                <label for="SkinThickness">Skin Thickness value:</label>
+                <input type="text" name="SkinThickness" required>
+
+                <label for="Insulin">Insulin Level:</label>
+                <input type="text" name="Insulin" required>
+
+                <label for="BMI">BMI value:</label>
+                <input type="text" name="BMI" required>
+
+                <label for="DiabetesPedigreeFunction">Diabetes Pedigree Function value:</label>
+                <input type="text" name="DiabetesPedigreeFunction" required>
+
+                <label for="Age">Age of the Person:</label>
+                <input type="text" name="Age" required>
+
+                <button type="submit">Diabetes test result</button>
+            </form>
+        </div>
+
+        <div class="about-section">
+            <h2>About Diabetes</h2>
+            <p>Diabetes is a chronic metabolic disorder characterized by high blood sugar levels resulting from either insufficient insulin production or the body's ineffective use of insulin.</p>
+
+            <h2>Symptoms</h2>
+            <ul>
+                <li>Increased thirst (polydipsia): Feeling unusually thirsty and needing to drink more fluids.</li>
+                <li>Frequent urination (polyuria): Urinating more often than usual, particularly at night.</li>
+                <li>Increased hunger (polyphagia): Feeling hungry more frequently, even after eating.</li>
+                <li>Fatigue: Feeling tired and lacking energy, even with adequate rest.</li>
+                <li>Unexplained weight loss: Losing weight without trying, often despite increased appetite.</li>
+            </ul>
+
+            <h2>Causes</h2>
+            <ul>
+                <li>Type 1 diabetes: Autoimmune destruction of insulin-producing beta cells in the pancreas, leading to little or no insulin production.</li>
+                <li>Type 2 diabetes: Insulin resistance, where cells fail to respond effectively to insulin, combined with inadequate insulin secretion.</li>
+                <li>Gestational diabetes: High blood sugar levels that develop during pregnancy, often due to hormonal changes and insulin resistance.</li>
+            </ul>
+
+            <h2>Treatment Options</h2>
+            <ul>
+                <li>Lifestyle modifications: Healthy diet, regular exercise, weight management, and smoking cessation.</li>
+                <li>Medications: Oral medications or insulin therapy to lower blood sugar levels and manage diabetes complications.</li>
+                <li>Blood sugar monitoring: Regular monitoring of blood glucose levels to assess treatment effectiveness and make adjustments as needed.</li>
+            </ul>
+
+            <h2>Complications</h2>
+            <ul>
+                <li>Cardiovascular disease: Diabetes increases the risk of heart disease, stroke, and peripheral artery disease.</li>
+                <li>Nerve damage (neuropathy): High blood sugar levels can damage nerves throughout the body, leading to pain, numbness, or tingling, particularly in the extremities.</li>
+                <li>Kidney damage (nephropathy): Diabetes can cause kidney damage or failure over time, leading to protein in the urine and reduced kidney function.</li>
+                <li>Eye damage (retinopathy): Diabetes can damage the blood vessels in the retina, leading to vision problems or blindness if left untreated.</li>
+                <li>Foot problems: Diabetes increases the risk of foot ulcers, infections, and poor circulation, which can lead to serious complications and even amputation if not properly managed.</li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

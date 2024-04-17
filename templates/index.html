@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DigiHealth - Home</title>
+
+    <!-- Linking Canva Sans font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Canva+Sans:wght@700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-image: url('/static/background.jpg'); /* Add background image */
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        .container {
+            background-color: rgba(241, 244, 238, 0.8); /* Light green color with semi-transparent white side */
+            padding: 20px; /* Keep the padding as before */
+            margin: 100px; /* Keep the margin as before */
+            border-radius: 20px; /* Keep the border-radius as before */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Keep the box-shadow as before */
+        }
+
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-family: 'Canva Sans', sans-serif; /* Change font family to Canva Sans */
+            text-transform: uppercase; /* Make text uppercase */
+            color: #0066cc;
+            text-align: center;
+            font-size: 30px; /* Increase font size for title */
+            margin-bottom: 40px; /* Keep the margin as before */
+            font-weight: bold; /* Keep font weight */
+        }
+
+        #info {
+            font-family: 'Canva Sans', sans-serif; /* Change font family to Canva Sans */
+            font-size: 16px; /* Keep font size for info */
+            text-align: center;
+            color: #000000; /* Keep text color for info */
+            margin-bottom: 20px; /* Keep the margin as before */
+        }
+
+        #info div {
+            margin-bottom: 10px; /* Keep the margin as before */
+            font-weight: bold; /* Make text slightly bold */
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex; /* Keep the display as flex for disease icons */
+            justify-content: space-between; /* Keep the justification as before */
+        }
+
+        li {
+            margin-bottom: 20px; /* Keep the margin as before */
+            text-align: center; /* Keep the text alignment as before */
+        }
+
+        a {
+            text-decoration: none;
+            color: #000000;
+            transition: color 0.3s ease-in-out;
+        }
+
+        a:hover {
+            color: #004080;
+        }
+
+        hr {
+            border: 1px solid #ddd;
+        }
+
+        form {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgb(148, 147, 147);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input {
+            width: calc(100% - 22px); /* Adjusting input width */
+            padding: 10px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #0066cc;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background-color: #004080;
+        }
+
+        /* Additional styles for prediction results */
+        h3 {
+            color: #009900;
+        }
+
+        p {
+            margin-bottom: 10px;
+        }
+
+        /* ChatBot styles */
+        .chatbot-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .chatbot-container:hover {
+            transform: scale(1.1);
+        }
+
+        .ai-icon-large {
+            width: 150px; /* Keep the width as before */
+            height: 150px; /* Keep the height as before */
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 24px; /* Keep the font size as before */
+            color: #fff; /* Change font color for chatbot */
+            background-color: #0066cc; /* Add background color for chatbot */
+            padding: 10px; /* Add padding for chatbot */
+            border-radius: 50%; /* Make it circular */
+        }
+
+        .ai-icon-large:hover {
+            background-color: #004080; /* Change background color on hover */
+        }
+
+        /* Style for the health prediction category section */
+        #health-prediction-section {
+            margin-bottom: 20px;
+        }
+
+        #text {
+            padding: 2px;
+            font-size: 17px;
+        }
+
+        /* Disease icon boxes */
+        .disease-icon {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            width: calc(25% - 20px); /* Adjust width to fit four items in a row */
+            box-sizing: border-box;
+            text-align: center;
+            margin-bottom: 20px; /* Add margin between disease items */
+        }
+
+        .disease-icon img {
+            max-width: 100px;
+            max-height: 100px;
+            margin-bottom: 10px;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .disease-icon h3 {
+            text-align: center;
+        }
+
+        /* Prediction Result Styles */
+        #prediction-result {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .result-item {
+            margin-bottom: 20px;
+        }
+
+        .result-item strong {
+            font-weight: bold;
+        }
+
+        .result-item ul,
+        .result-item ol {
+            margin-top: 5px;
+            margin-bottom: 0;
+            padding-left: 20px;
+        }
+
+        .result-item li {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <main>
+            <h1>Welcome to DigiHealth: Advancing Healthcare with AI-Enabled Disease Detection System and Chatbot Companion</h1>
+
+            <div id="info">
+                <div>Project Guide : Dr.K. UPENDRA BABU</div>
+                <div>Project Incharge: Dr.K.P. KALIYAMURTHIE</div>
+                <div>Course Coordinator : Dr.T. VEERAMANI</div>
+                <div>Created by SYED IBRAHIM A, SURYAA NT, BOMMANABOINA GOWTHAM KUMAR, JEFRY R</div>
+            </div>
+
+            <hr>
+            <!-- Health Prediction Category Section -->
+            <section id="health-prediction-section">
+                <h2>Disease Prediction (Values Required)</h2>
+                <ul>
+                    <li class="disease-icon">
+                        <img src="/static/diabetes_icon.png" alt="Diabetes Icon">
+                        <h3><a href="/diabetes">Diabetes Prediction</a></h3>
+                    </li>
+                    <li class="disease-icon">
+                        <img src="/static/heart_disease_icon.png" alt="Heart Disease Icon">
+                        <h3><a href="/heart_disease">Heart Disease Prediction</a></h3>
+                    </li>
+                    <li class="disease-icon">
+                        <img src="/static/parkinsons_icon.png" alt="Parkinson's Icon">
+                        <h3><a href="/parkinsons">Parkinson's Prediction</a></h3>
+                    </li>
+                    <li class="disease-icon">
+                        <img src="/static/breast_cancer_icon.png" alt="Breast Cancer Icon">
+                        <h3><a href="/breast_cancer">Breast Cancer Prediction</a></h3>
+                    </li>
+                </ul>
+            </section>
+
+            <hr>
+
+            <h2>General Health Prediction</h2>
+            <form action="/predict" method="post">
+                <label for="symptoms">Enter Symptoms (comma-separated):</label>
+                <input type="text" id="symptoms" name="symptoms" placeholder="e.g., fever, cough, fatigue" required>
+                <button type="submit">Predict</button>
+            </form>
+
+            {% if predicted_disease %}
+            <div id="prediction-result">
+                <h3>Prediction Result:</h3>
+                <div class="result-item">
+                    <strong>The predicted disease is:</strong>
+                    <span>{{ predicted_disease }}</span>
+                </div>
+                <div class="result-item">
+                    <strong>Description:</strong>
+                    <span>{{ dis_des }}</span>
+                </div>
+                <div class="result-item">
+                    <strong>Precautions:</strong>
+                    <ul>
+                        {% for precaution in my_precautions %}
+                        <li>{{ precaution }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="result-item">
+                    <strong>Medications:</strong>
+                    <ul>
+                        {% for medication in medications %}
+                        <li>{{ medication }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="result-item">
+                    <strong>Recommended Diet:</strong>
+                    <ul>
+                        {% for diet in my_diet %}
+                        <li>{{ diet }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="result-item">
+                    <strong>Workout:</strong>
+                    <ol>
+                        {% for step in workout %}
+                        <li>{{ step }}</li>
+                        {% endfor %}
+                    </ol>
+                </div>
+            </div>
+            {% endif %}
+
+            <hr>
+        </main>
+    </div>
+
+    <!-- ChatBot Container -->
+    <div class="chatbot-container">
+        <a href="/gemini" style="text-decoration: none;">
+            <img src="/static/AI.png" alt="AI Logo" class="ai-icon-large"> <!-- Replaced "AI" text with larger AI.png image -->
+        </a>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> DigiHealth Chatbot </title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-image: url('/static/background.jpg'); /* Add the background image */
+            background-size: cover; /* Adjust the background image to cover the entire body */
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        h1 {
+            text-align: center;
+            color: #0066cc;
+            margin-bottom: 20px;
+        }
+        #chat-container {
+            max-width: 800px; /* Increase the maximum width of the chat container */
+            width: 100%; /* Ensure the chat container spans the entire available width */
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            margin-top: 20px;
+            overflow-y: auto;
+            height: 500px; /* Set a higher height for the chat container */
+            background-color: rgba(255, 255, 255, 0.8); /* Add a semi-transparent white background */
+        }
+        .user, .bot {
+            margin-bottom: 10px;
+        }
+        .user {
+            color: #007bff;
+            text-align: right;
+        }
+        .bot {
+            color: #28a745;
+            text-align: left;
+        }
+        .bot-response {
+            list-style-type: disc;
+            margin-left: 20px;
+        }
+        form {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 800px; /* Ensure the form does not exceed the width of the chat container */
+        }
+        input {
+            flex-grow: 1;
+            margin-right: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #clear-chat-btn {
+            margin-top: 10px;
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        #clear-chat-btn:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <h1>DigiHealth - Chatbot Powered By Gemini Pro LLM</h1>
+
+    <div id="chat-container">
+        {% for role, message in chat_history %}
+            <div class="{{ role | lower }}">{{ role }}: {{ message }}</div>
+        {% endfor %}
+    </div>
+
+    <form method="post">
+        <input type="text" name="user_input" id="user_input" placeholder="Type your message...">
+        <button type="submit">Send</button>
+    </form>
+
+    <button id="clear-chat-btn" onclick="clearChat()">Clear Chat</button>
+
+    <script>
+        function clearChat() {
+            document.getElementById("chat-container").innerHTML = "";
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/marked@3.0.2/marked.min.js"></script>
+</body>
+</html>

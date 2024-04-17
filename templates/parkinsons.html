@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DigiHealth - Parkinson's Disease Prediction</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url('static/background.jpg');
+            background-size: cover;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+            color: #0066cc; /* Blue color for Parkinson's disease theme */
+            margin-top: 20px;
+        }
+
+        p {
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            width: 100%;
+            max-width: 1200px;
+            margin-top: 20px;
+        }
+
+        form {
+            flex: 1;
+            max-width: 600px;
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #0066cc; /* Blue color for Parkinson's disease theme */
+            border-radius: 8px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .disease-info-box {
+            flex: 1;
+            max-width: 600px;
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #0066cc; /* Blue color for Parkinson's disease theme */
+            border-radius: 8px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #0066cc; /* Blue color for Parkinson's disease theme */
+        }
+
+        input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #0066cc; /* Blue color for Parkinson's disease theme */
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background-color: #004080; /* Darker blue on hover */
+        }
+
+        h2 {
+            color: #0066cc; /* Blue color for Parkinson's disease theme */
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        ul {
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>DigiHealth - Parkinson's Disease Prediction</h1>
+
+    <div class="container">
+        <form method="post" action="/parkinsons">
+            <label for="fo">[MDVP-Fo] (Hz) - Average vocal fundamental frequency:</label>
+            <input type="text" name="fo" required>
+
+            <label for="fhi">[MDVP-Fhi] (Hz) - Maximum vocal fundamental frequency:</label>
+            <input type="text" name="fhi" required>
+
+            <label for="flo">[MDVP-Flo] (Hz) - Minimum vocal fundamental frequency:</label>
+            <input type="text" name="flo" required>
+
+            <label for="Jitter_percent">[MDVP-Jitter] (%) - Percentage of cycle-to-cycle variability:</label>
+            <input type="text" name="Jitter_percent" required>
+
+            <label for="Jitter_Abs">[MDVP-Jitter] (Abs) - Absolute value of cycle-to-cycle variability:</label>
+            <input type="text" name="Jitter_Abs" required>
+
+            <label for="RAP">[MDVP-RAP] - Relative measure of the pitch disturbance:</label>
+            <input type="text" name="RAP" required>
+
+            <label for="PPQ">[MDVP-PPQ] - Pitch perturbation quotient:</label>
+            <input type="text" name="PPQ" required>
+
+            <label for="DDP">[Jitter-DDP] - Average absolute difference of differences between jitter cycles:</label>
+            <input type="text" name="DDP" required>
+
+            <label for="Shimmer">[MDVP-Shimmer] - Variations in the voice amplitude:</label>
+            <input type="text" name="Shimmer" required>
+
+            <label for="Shimmer_dB">[MDVP-Shimmer(dB)] - Variations in the voice amplitude in dB:</label>
+            <input type="text" name="Shimmer_dB" required>
+
+            <label for="APQ3">[Shimmer-APQ3] - Three point amplitude perturbation quotient:</label>
+            <input type="text" name="APQ3" required>
+
+            <label for="APQ5">[Shimmer-APQ5] - Five point amplitude perturbation quotient:</label>
+            <input type="text" name="APQ5" required>
+
+            <label for="APQ">[MDVP-APQ] - Amplitude perturbation quotient from MDVP:</label>
+            <input type="text" name="APQ" required>
+
+            <label for="DDA">[Shimmer-DDA] - Average absolute difference between the amplitudes:</label>
+            <input type="text" name="DDA" required>
+
+            <label for="NHR">[NHR] - Noise-to-harmonics Ratio:</label>
+            <input type="text" name="NHR" required>
+
+            <label for="HNR">[HNR] - Harmonics-to-noise Ratio:</label>
+            <input type="text" name="HNR" required>
+
+            <label for="RPDE">[RPDE] - Recurrence period density entropy:</label>
+            <input type="text" name="RPDE" required>
+
+            <label for="DFA">[DFA] - Signal fractal scaling exponent:</label>
+            <input type="text" name="DFA" required>
+
+            <label for="spread1">[spread1] - Discrete probability distribution of occurrence:</label>
+            <input type="text" name="spread1" required>
+
+            <label for="spread2">[spread2] - Three nonlinear measures of fundamental frequency variation:</label>
+            <input type="text" name="spread2" required>
+
+            <label for="D2">[D2] - Correlation dimension:</label>
+            <input type="text" name="D2" required>
+
+            <label for="PPE">[PPE] - Entropy of the discrete probability distribution:</label>
+            <input type="text" name="PPE" required>
+
+            <button type="submit">Parkinson's Test Result</button>
+        </form>
+
+        <div class="disease-info-box">
+            <h2>About Parkinson's Disease</h2>
+            <p>Parkinson's disease is a progressive neurological disorder that affects movement. It occurs when nerve cells (neurons) in the brain gradually break down or die, leading to a shortage of dopamine, a chemical messenger involved in controlling movement.</p>
+
+            <h2>Symptoms</h2>
+            <p><strong>Tremors:</strong> Involuntary shaking, usually starting in one hand.</p>
+            <p><strong>Bradykinesia:</strong> Slowed movement and difficulty initiating and executing movements.</p>
+            <p><strong>Muscle rigidity:</strong> Stiffness or inflexibility in the muscles, often leading to decreased range of motion.</p>
+            <p><strong>Postural instability:</strong> Impaired balance and coordination, increasing the risk of falls.</p>
+            <p><strong>Impaired speech and writing:</strong> Speaking or writing may become softer, slurred, or illegible.</p>
+
+            <h2>Causes</h2>
+            <p><strong>Loss of dopamine-producing neurons:</strong> The exact cause of Parkinson's disease is unknown, but genetics, environmental factors, and aging are believed to play a role.</p>
+            <p><strong>Alpha-synuclein accumulation:</strong> Clumps of protein called Lewy bodies accumulate in the brain, disrupting normal cell function.</p>
+            <p><strong>Oxidative stress:</strong> Damage to cells caused by free radicals may contribute to neuron degeneration.</p>
+            <p><strong>Inflammation:</strong> Chronic inflammation in the brain may contribute to Parkinson's disease progression.</p>
+
+            <h2>Treatment Options</h2>
+            <p><strong>Medications:</strong> Dopamine agonists, levodopa, and other medications can help manage motor symptoms and improve quality of life.</p>
+            <p><strong>Deep brain stimulation (DBS):</strong> Surgical implantation of electrodes in the brain can help regulate abnormal brain activity and reduce symptoms.</p>
+            <p><strong>Physical therapy:</strong> Exercises and stretching can improve flexibility, balance, and mobility.</p>
+            <p><strong>Speech therapy:</strong> Techniques to improve speech and swallowing difficulties.</p>
+            <p><strong>Occupational therapy:</strong> Strategies to enhance daily living activities and maintain independence.</p>
+
+            <h2>Complications</h2>
+            <p><strong>Motor fluctuations:</strong> Fluctuations in medication effectiveness can lead to "on-off" periods, where symptoms vary in severity throughout the day.</p>
+            <p><strong>Dyskinesia:</strong> Involuntary, jerky movements or writhing motions, often as a side effect of long-term levodopa use.</p>
+            <p><strong>Cognitive changes:</strong> Parkinson's disease can lead to memory problems, confusion, and difficulty concentrating, especially in later stages.</p>
+            <p><strong>Psychiatric symptoms:</strong> Depression, anxiety, hallucinations, and psychosis may occur, impacting mental well-being and quality of life.</p>
+            <p><strong>Swallowing and digestive issues:</strong> Difficulty swallowing (dysphagia), constipation, and other gastrointestinal problems can arise, increasing the risk of malnutrition and aspiration pneumonia.</p>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DigiHealth - Heart Disease Prediction</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url('static/background.jpg');
+            background-size: cover;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+            color: #0066cc; /* Blue color for heart disease theme */
+            margin-top: 20px;
+        }
+
+        p {
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            width: 100%;
+            max-width: 1200px;
+            margin-top: 20px;
+        }
+
+        form {
+            flex: 1;
+            max-width: 600px;
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #0066cc; /* Blue color for heart disease theme */
+            border-radius: 8px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .disease-info-box {
+            flex: 1;
+            max-width: 600px;
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #0066cc; /* Blue color for heart disease theme */
+            border-radius: 8px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #0066cc; /* Blue color for heart disease theme */
+        }
+
+        input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #0066cc; /* Blue color for heart disease theme */
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background-color: #004080; /* Darker blue on hover */
+        }
+
+        h2 {
+            color: #0066cc; /* Blue color for heart disease theme */
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        ul {
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>DigiHealth - Heart Disease Prediction</h1>
+
+    <div class="container">
+        <form method="post" action="/heart_disease">
+            <label for="age">Age:</label>
+            <input type="text" name="age" required>
+
+            <label for="sex">Sex:</label>
+            <input type="text" name="sex" required>
+
+            <label for="cp">Chest Pain types:</label>
+            <input type="text" name="cp" required>
+
+            <label for="trestbps">Resting Blood Pressure:</label>
+            <input type="text" name="trestbps" required>
+
+            <label for="chol">Serum Cholesterol in mg/dl:</label>
+            <input type="text" name="chol" required>
+
+            <label for="fbs">Fasting Blood Sugar > 120 mg/dl:</label>
+            <input type="text" name="fbs" required>
+
+            <label for="restecg">Resting Electrocardiographic results:</label>
+            <input type="text" name="restecg" required>
+
+            <label for="thalach">Maximum Heart Rate achieved:</label>
+            <input type="text" name="thalach" required>
+
+            <label for="exang">Exercise Induced Angina:</label>
+            <input type="text" name="exang" required>
+
+            <label for="oldpeak">ST depression induced by exercise:</label>
+            <input type="text" name="oldpeak" required>
+
+            <label for="slope">Slope of the peak exercise ST segment:</label>
+            <input type="text" name="slope" required>
+
+            <label for="ca">Major vessels colored by fluoroscopy:</label>
+            <input type="text" name="ca" required>
+
+            <label for="thal">thal: 0 = normal; 1 = fixed defect; 2 = reversible defect:</label>
+            <input type="text" name="thal" required>
+
+            <button type="submit">Heart Disease Test Result</button>
+        </form>
+
+        <div class="disease-info-box">
+            <h2>About Heart Disease</h2>
+            <p>Heart disease, also known as cardiovascular disease (CVD), encompasses various conditions affecting the heart and blood vessels. It's a leading cause of death worldwide.</p>
+
+            <h2>Symptoms</h2>
+            <ul>
+                <li>Palpitations (racing or pounding heart): Sensations of a fluttering or irregular heartbeat.</li>
+                <li>Chest pain or discomfort: Tightness, pressure, or discomfort in the chest area.</li>
+                <li>Sweating: Perspiration, often accompanied by other symptoms.</li>
+                <li>Lightheadedness or dizziness: Feeling faint or unsteady.</li>
+                <li>Shortness of breath: Difficulty breathing, particularly during exertion.</li>
+            </ul>
+
+            <h2>Causes</h2>
+            <ul>
+                <li>Atherosclerosis (plaque buildup in arteries): Narrowing of arteries due to cholesterol and fatty deposits.</li>
+                <li>Hypertension (high blood pressure): Increased force of blood against artery walls.</li>
+                <li>Diabetes: Elevated blood sugar levels damaging blood vessels.</li>
+                <li>Obesity: Excess body weight straining the heart and arteries.</li>
+                <li>Smoking: Chemicals in tobacco damaging blood vessels and increasing clotting.</li>
+                <li>Sedentary lifestyle: Lack of physical activity leading to poor cardiovascular health.</li>
+            </ul>
+
+            <h2>Treatment Options</h2>
+            <ul>
+                <li>Lifestyle modifications: Adopting a heart-healthy diet, regular exercise, smoking cessation, stress management, and weight control.</li>
+                <li>Medications: Prescribed to manage risk factors such as high blood pressure, cholesterol, and blood sugar levels.</li>
+                <li>Medical procedures: Surgical interventions like angioplasty, stent placement, bypass surgery, or valve repair to improve blood flow and heart function.</li>
+            </ul>
+
+            <h2>Complications</h2>
+            <ul>
+                <li>Heart attack (myocardial infarction): Damage to the heart muscle due to blocked blood flow.</li>
+                <li>Stroke: Interruption of blood supply to the brain, leading to brain damage.</li>
+                <li>Heart failure: Inability of the heart to pump enough blood to meet the body's needs.</li>
+                <li>Peripheral artery disease: Narrowing of arteries in the limbs, reducing blood flow and causing pain or numbness.</li>
+                <li>Sudden cardiac arrest: Abrupt loss of heart function, often due to an electrical disturbance.</li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DigiHealth - Breast Cancer Prediction</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-image: url('static/background.jpg');
+            background-size: cover;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            text-align: center;
+            color: #0066cc;
+            margin-top: 20px;
+        }
+
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            width: 100%;
+            max-width: 1200px;
+            margin-top: 20px;
+        }
+
+        form {
+            max-width: 300px;
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #0066cc;
+            border-radius: 8px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        #about-disease {
+            max-width: 600px;
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #0066cc;
+            border-radius: 8px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #0066cc;
+        }
+
+        input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #0066cc;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background-color: #004080;
+        }
+
+        h2 {
+            color: #0066cc;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        p,
+        ul {
+            color: #333;
+        }
+
+        ul {
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>DigiHealth - Breast Cancer Prediction</h1>
+
+    <main>
+        <form method="post" action="/breast_cancer">
+            <label for="radius_mean">Enter value for radius_mean:</label>
+            <input type="number" name="mean_radius" step="0.000001" required>
+
+            <label for="texture_mean">Enter value for texture_mean:</label>
+            <input type="number" name="mean_texture" step="0.000001" required>
+
+            <label for="perimeter_mean">Enter value for perimeter_mean:</label>
+            <input type="number" name="mean_perimeter" step="0.000001" required>
+
+            <label for="area_mean">Enter value for area_mean:</label>
+            <input type="number" name="mean_area" step="0.000001" required>
+
+            <label for="smoothness_mean">Enter value for smoothness_mean:</label>
+            <input type="number" name="mean_smoothness" step="0.000001" required>
+
+            <label for="compactness_mean">Enter value for compactness_mean:</label>
+            <input type="number" name="mean_compactness" step="0.000001" required>
+
+            <label for="concavity_mean">Enter value for concavity_mean:</label>
+            <input type="number" name="mean_concavity" step="0.000001" required>
+
+            <label for="concave_points_mean">Enter value for concave_points_mean:</label>
+            <input type="number" name="mean_concave_points" step="0.000001" required>
+
+            <label for="symmetry_mean">Enter value for symmetry_mean:</label>
+            <input type="number" name="mean_symmetry" step="0.000001" required>
+
+            <label for="fractal_dimension_mean">Enter value for fractal_dimension_mean:</label>
+            <input type="number" name="mean_fractal_dimension" step="0.000001" required>
+
+            <label for="radius_se">Enter value for radius_se:</label>
+            <input type="number" name="radius_error" step="0.000001" required>
+
+            <label for="texture_se">Enter value for texture_se:</label>
+            <input type="number" name="texture_error" step="0.000001" required>
+
+            <label for="perimeter_se">Enter value for perimeter_se:</label>
+            <input type="number" name="perimeter_error" step="0.000001" required>
+
+            <label for="area_se">Enter value for area_se:</label>
+            <input type="number" name="area_error" step="0.000001" required>
+
+            <label for="smoothness_se">Enter value for smoothness_se:</label>
+            <input type="number" name="smoothness_error" step="0.000001" required>
+
+            <label for="compactness_se">Enter value for compactness_se:</label>
+            <input type="number" name="compactness_error" step="0.000001" required>
+
+            <label for="concavity_se">Enter value for concavity_se:</label>
+            <input type="number" name="concavity_error" step="0.000001" required>
+
+            <label for="concave_points_se">Enter value for concave_points_se:</label>
+            <input type="number" name="concave_points_error" step="0.000001" required>
+
+            <label for="symmetry_se">Enter value for symmetry_se:</label>
+            <input type="number" name="symmetry_error" step="0.000001" required>
+
+            <label for="fractal_dimension_se">Enter value for fractal_dimension_se:</label>
+            <input type="number" name="fractal_dimension_error" step="0.000001" required>
+
+            <label for="radius_worst">Enter value for radius_worst:</label>
+            <input type="number" name="worst_radius" step="0.000001" required>
+
+            <label for="texture_worst">Enter value for texture_worst:</label>
+            <input type="number" name="worst_texture" step="0.000001" required>
+
+            <label for="perimeter_worst">Enter value for perimeter_worst:</label>
+            <input type="number" name="worst_perimeter" step="0.000001" required>
+
+            <label for="area_worst">Enter value for area_worst:</label>
+            <input type="number" name="worst_area" step="0.000001" required>
+
+            <label for="smoothness_worst">Enter value for smoothness_worst:</label>
+            <input type="number" name="worst_smoothness" step="0.000001" required>
+
+            <label for="compactness_worst">Enter value for compactness_worst:</label>
+            <input type="number" name="worst_compactness" step="0.000001" required>
+
+            <label for="concavity_worst">Enter value for concavity_worst:</label>
+            <input type="number" name="worst_concavity" step="0.000001" required>
+
+            <label for="concave_points_worst">Enter value for concave_points_worst:</label>
+            <input type="number" name="worst_concave_points" step="0.000001" required>
+
+            <label for="symmetry_worst">Enter value for symmetry_worst:</label>
+            <input type="number" name="worst_symmetry" step="0.000001" required>
+
+            <label for="fractal_dimension_worst">Enter value for fractal_dimension_worst:</label>
+            <input type="number" name="worst_fractal_dimension" step="0.000001" required>
+            
+            <button type="submit">Breast Cancer Test Result</button>
+        </form>
+
+        <div id="about-disease">
+            <h2>About Breast Cancer</h2>
+            <p>Breast cancer is a malignant tumor that develops in the breast tissue. It can occur in both men and women, although it is more common in women. Breast cancer can spread to nearby lymph nodes and other parts of the body if not detected and treated early.</p>
+
+            <h2>Symptoms</h2>
+            <ul>
+                <li>Lump or mass in the breast or underarm area</li>
+                <li>Changes in breast size or shape</li>
+                <li>Nipple discharge, other than breast milk</li>
+                <li>Breast pain or tenderness</li>
+                <li>Changes in the texture or appearance of the breast skin, such as dimpling or puckering</li>
+            </ul>
+
+            <h2>Causes</h2>
+            <ul>
+                <li>Genetic mutations: Inherited mutations in genes such as BRCA1 and BRCA2 increase the risk of developing breast cancer.</li>
+                <li>Hormonal factors: Increased estrogen exposure, such as early menstruation, late menopause, or hormone replacement therapy, can raise the risk.</li>
+                <li>Family history: Having a close relative with breast cancer increases the likelihood of developing the disease.</li>
+                <li>Lifestyle factors: Obesity, alcohol consumption, and lack of physical activity can also contribute to breast cancer risk.</li>
+            </ul>
+
+            <h2>Treatment Options</h2>
+            <ul>
+                <li>Surgery: Lumpectomy (removal of the tumor and surrounding tissue) or mastectomy (removal of the entire breast) may be performed.</li>
+                <li>Radiation therapy: High-energy rays are used to kill cancer cells or shrink tumors after surgery.</li>
+                <li>Chemotherapy: Drugs are used to kill cancer cells or stop their growth and may be given before or after surgery.</li>
+                <li>Hormone therapy: Medications that block the effects of estrogen or progesterone on breast cancer cells may be prescribed.</li>
+                <li>Targeted therapy: Drugs that target specific proteins or genes involved in cancer growth may be used.</li>
+            </ul>
+
+            <h2>Complications</h2>
+            <ul>
+                <li>Metastasis: Breast cancer can spread to other parts of the body, such as the bones, liver, lungs, or brain, leading to advanced or metastatic breast cancer.</li>
+                <li>Lymphedema: Removal of lymph nodes during surgery can lead to swelling and fluid buildup in the arms or chest.</li>
+                <li>Emotional and psychological effects: Breast cancer diagnosis and treatment can cause anxiety, depression, and stress, impacting emotional well-being and quality of life.</li>
+                <li>Treatment side effects: Chemotherapy, radiation therapy, and hormone therapy can cause side effects such as fatigue, nausea, hair loss, and menopausal symptoms.</li>
+            </ul>
+        </div>
+    </main>
+</body>
+
+</html>
